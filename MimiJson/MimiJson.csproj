@@ -7,8 +7,8 @@
     <ProjectGuid>{215C049E-EA04-46F8-91FD-7D9242619E2B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Mimi_Json</RootNamespace>
-    <AssemblyName>Mimi-Json</AssemblyName>
+    <RootNamespace>MimiJson</RootNamespace>
+    <AssemblyName>MimiJson</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -44,16 +44,17 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="DynamicEnumerable.cs" />
+    <Compile Include="EmptyEnumerator.cs" />
+    <Compile Include="IJsonLineInfo.cs" />
     <Compile Include="JOPair.cs" />
     <Compile Include="JsonArray.cs" />
-    <Compile Include="JsonLogger.cs" />
+    <Compile Include="JsonComposeSettings.cs" />
     <Compile Include="JsonObject.cs" />
-    <Compile Include="JsonPos.cs" />
-    <Compile Include="JsonValidateError.cs" />
-    <Compile Include="JsonValidater.cs" />
+    <Compile Include="JsonReader.cs" />
+    <Compile Include="JsonReaderToken.cs" />
     <Compile Include="JsonValue.cs" />
     <Compile Include="JsonValueType.cs" />
-    <Compile Include="Parser.cs" />
+    <Compile Include="JsonWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,33 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace MimiJson
 {
     public struct JOPair
     {
-        private string _Key;
-        private JsonValue _Value;
-        public string Key
-        {
-            get
-            {
-                return _Key;
-            }
-        }
-        public JsonValue Value
-        {
-            get
-            {
-                return _Value;
-            }
-        }
+        private string _key;
+        private JsonValue _value;
+        public string Key { get { return _key; } }
+        public JsonValue Value { get { return _value; } }
 
         public JOPair(string key, JsonValue value)
         {
-            _Key = key;
-            _Value = value;
+            _key = key;
+            _value = value;
         }
 
         public static implicit operator KeyValuePair<string, JsonValue>(JOPair pair)

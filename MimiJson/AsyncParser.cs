@@ -54,9 +54,9 @@ namespace MimiJson
         {
             while (true)
             {
-                DateTime tick = DateTime.Now;
+                var tick = DateTime.Now;
 
-                TimeSpan interval = tick - LastParse;
+                var interval = tick - LastParse;
 
                 if (interval.TotalMilliseconds > WaitTick)
                 {
@@ -93,12 +93,12 @@ namespace MimiJson
         {
             this.asyncOperation.Post(operationStarted, new EventArgs());
 
-            int p = 0;
+            var p = 0;
 
-            JsonValue jval = new JsonValue(JsonValueType.Null);
+            var jval = new JsonValue(JsonValueType.Null);
             try
             {
-                jval = JsonValue.Parse((string)text, ref p);
+                jval = JsonValue.Parse((string)text);
             }
             catch { }
 

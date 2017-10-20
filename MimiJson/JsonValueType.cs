@@ -1,5 +1,4 @@
-﻿
-namespace MimiJson
+﻿namespace MimiJson
 {
     public enum JsonValueType
     {
@@ -8,7 +7,6 @@ namespace MimiJson
         Object,
         Array,
         Boolean,
-        Null,
-        Refer
+        Null
     }
 }
