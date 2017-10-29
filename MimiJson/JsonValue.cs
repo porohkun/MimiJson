@@ -329,10 +329,17 @@ namespace MimiJson
 
         private void ToStream(Stream stream, JsonComposeSettings settings)
         {
+#if Net45
             using (var writer = new JsonWriter(stream, settings, 1024, true))
             {
                 Compose(writer);
             }
+#else
+            using (var writer = new JsonWriter(stream, settings))
+            {
+                Compose(writer);
+            }
+#endif
         }
 
         public void ToFile(string path, JsonComposeSettings settings = null)
@@ -372,7 +379,7 @@ namespace MimiJson
             //writer.WriteNewLine();
         }
 
-        #endregion
+#endregion
 
         public JsonValue Clone()
         {
@@ -402,7 +409,7 @@ namespace MimiJson
             return result;
         }
 
-        #region misc
+#region misc
 
         public IEnumerator<JsonValue> GetEnumerator()
         {
@@ -478,6 +485,6 @@ namespace MimiJson
             }
         }
 
-        #endregion
+#endregion
     }
 }

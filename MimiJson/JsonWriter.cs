@@ -10,7 +10,9 @@ namespace MimiJson
         public JsonWriter(Stream stream) : base(stream) { _settings = new JsonComposeSettings(); }
         public JsonWriter(Stream stream, Encoding encoding) : base(stream, encoding) { _settings = new JsonComposeSettings(); }
         public JsonWriter(Stream stream, Encoding encoding, int bufferSize) : base(stream, encoding, bufferSize) { _settings = new JsonComposeSettings(); }
+#if Net45
         public JsonWriter(Stream stream, Encoding encoding, int bufferSize, bool leaveOpen) : base(stream, encoding, bufferSize, leaveOpen) { _settings = new JsonComposeSettings(); }
+#endif
         public JsonWriter(string path) : base(path) { _settings = new JsonComposeSettings(); }
         public JsonWriter(string path, bool append) : base(path, append) { _settings = new JsonComposeSettings(); }
         public JsonWriter(string path, bool append, Encoding encoding) : base(path, append, encoding) { _settings = new JsonComposeSettings(); }
@@ -39,12 +41,12 @@ namespace MimiJson
         {
             _settings = settings;
         }
-
+#if Net45
         public JsonWriter(Stream stream, JsonComposeSettings settings, int bufferSize, bool leaveOpen) : base(stream, settings.Encoding, bufferSize, leaveOpen)
         {
             _settings = settings;
         }
-
+#endif
         public JsonWriter(string path, JsonComposeSettings settings) : base(path, false, settings.Encoding)
         {
             _settings = settings;
