@@ -318,18 +318,25 @@ namespace MimiJson
 
         public string ToString(JsonComposeSettings settings)
         {
+#if NET45
             using (var stream = new MemoryStream())
+#else
+            using (var stream = new MyMemoryStream())
+#endif
             {
                 ToStream(stream, settings);
-                stream.Flush();
                 stream.Position = 0;
-                return settings.Encoding.GetString(stream.ToArray());
+                var result = settings.Encoding.GetString(stream.ToArray());
+#if !NET45
+                stream.ReallyClose();
+#endif
+                return result;
             }
         }
 
         private void ToStream(Stream stream, JsonComposeSettings settings)
         {
-#if Net45
+#if NET45
             using (var writer = new JsonWriter(stream, settings, 1024, true))
             {
                 Compose(writer);
@@ -379,7 +386,7 @@ namespace MimiJson
             //writer.WriteNewLine();
         }
 
-#endregion
+        #endregion
 
         public JsonValue Clone()
         {
@@ -409,7 +416,7 @@ namespace MimiJson
             return result;
         }
 
-#region misc
+        #region misc
 
         public IEnumerator<JsonValue> GetEnumerator()
         {
@@ -436,36 +443,55 @@ namespace MimiJson
             {
                 switch (Type)
                 {
-                    case JsonValueType.Null: return "NULL";
-                    case JsonValueType.Array: return "ARRAY";
-                    case JsonValueType.Boolean: return Boolean.ToString().ToUpper();
-                    case JsonValueType.Number: return Number.ToString();
-                    case JsonValueType.String: return String;
-                    case JsonValueType.Object: return "OBJECT";
-                    default: return "UNKNOWN";
+                    case JsonValueType.Null:
+                        return "NULL";
+                    case JsonValueType.Array:
+                        return "ARRAY";
+                    case JsonValueType.Boolean:
+                        return Boolean.ToString().ToUpper();
+                    case JsonValueType.Number:
+                        return Number.ToString();
+                    case JsonValueType.String:
+                        return String;
+                    case JsonValueType.Object:
+                        return "OBJECT";
+                    default:
+                        return "UNKNOWN";
                 }
             }
         }
 
         public bool Equals(JsonValue other)
         {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
-            if (Type != other.Type) return false;
-            if (Type == JsonValueType.String) return string.Equals(String, other.String);
-            if (Type == JsonValueType.Number) return Number.Equals(other.Number);
-            if (Type == JsonValueType.Boolean) return Boolean == other.Boolean;
-            if (Type == JsonValueType.Object) return Object.Equals(other.Object);
-            if (Type == JsonValueType.Array) return Array.Equals(other.Array);
-            if (Type == JsonValueType.Null) return true;
+            if (ReferenceEquals(null, other))
+                return false;
+            if (ReferenceEquals(this, other))
+                return true;
+            if (Type != other.Type)
+                return false;
+            if (Type == JsonValueType.String)
+                return string.Equals(String, other.String);
+            if (Type == JsonValueType.Number)
+                return Number.Equals(other.Number);
+            if (Type == JsonValueType.Boolean)
+                return Boolean == other.Boolean;
+            if (Type == JsonValueType.Object)
+                return Object.Equals(other.Object);
+            if (Type == JsonValueType.Array)
+                return Array.Equals(other.Array);
+            if (Type == JsonValueType.Null)
+                return true;
             return false;
         }
 
         public override bool Equals(object obj)
         {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
+            if (ReferenceEquals(null, obj))
+                return false;
+            if (ReferenceEquals(this, obj))
+                return true;
+            if (obj.GetType() != this.GetType())
+                return false;
             return Equals((JsonValue)obj);
         }
 
@@ -475,16 +501,21 @@ namespace MimiJson
             {
                 var hashCode = (int)Type;
 
-                if (Type == JsonValueType.String) hashCode = (hashCode * 397) ^ (String != null ? String.GetHashCode() : 0);
-                else if (Type == JsonValueType.Number) hashCode = (hashCode * 397) ^ Number.GetHashCode();
-                else if (Type == JsonValueType.Boolean) hashCode = (hashCode * 397) ^ Boolean.GetHashCode();
-                else if (Type == JsonValueType.Object) hashCode = (hashCode * 397) ^ Object.GetHashCode();
-                else if (Type == JsonValueType.Array) hashCode = (hashCode * 397) ^ Array.GetHashCode();
+                if (Type == JsonValueType.String)
+                    hashCode = (hashCode * 397) ^ (String != null ? String.GetHashCode() : 0);
+                else if (Type == JsonValueType.Number)
+                    hashCode = (hashCode * 397) ^ Number.GetHashCode();
+                else if (Type == JsonValueType.Boolean)
+                    hashCode = (hashCode * 397) ^ Boolean.GetHashCode();
+                else if (Type == JsonValueType.Object)
+                    hashCode = (hashCode * 397) ^ Object.GetHashCode();
+                else if (Type == JsonValueType.Array)
+                    hashCode = (hashCode * 397) ^ Array.GetHashCode();
 
                 return hashCode;
             }
         }
 
-#endregion
+        #endregion
     }
 }

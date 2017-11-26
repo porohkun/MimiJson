@@ -13,7 +13,7 @@ namespace MimiJson
         public JsonReader(Stream stream, Encoding encoding) : base(stream, encoding) { }
         public JsonReader(Stream stream, Encoding encoding, bool detectEncodingFromByteOrderMarks) : base(stream, encoding, detectEncodingFromByteOrderMarks) { }
         public JsonReader(Stream stream, Encoding encoding, bool detectEncodingFromByteOrderMarks, int bufferSize) : base(stream, encoding, detectEncodingFromByteOrderMarks, bufferSize) { }
-#if Net45
+#if NET45
         public JsonReader(Stream stream, Encoding encoding, bool detectEncodingFromByteOrderMarks, int bufferSize, bool leaveOpen) : base(stream, encoding, detectEncodingFromByteOrderMarks, bufferSize, leaveOpen) { }
 #endif
         public JsonReader(string path) : base(path) { }

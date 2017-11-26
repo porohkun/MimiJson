@@ -93,11 +93,5 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MimiJson\MimiJson.csproj">
-      <Project>{215c049e-ea04-46f8-91fd-7d9242619e2b}</Project>
-      <Name>MimiJson</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
