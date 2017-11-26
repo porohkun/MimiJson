@@ -163,7 +163,7 @@ namespace MimiJson
 
         private static bool IsEmpty(int value)
         {
-            return value == 32 || value == 9 || value == 10 || value == 13 || value == 0;
+            return value == 32 || value == 9 || value == 10 || value == 13 || value == 0 || value == 65279;
         }
 
         private static bool IsLimiter(int value)
