@@ -50,11 +50,31 @@ namespace MimiJson
         {
         }
 
-        #endregion
+		public JsonArray(IEnumerable<JsonObject> args) : this()
+		{
+			foreach (var arg in args)
+				Add(arg);
+		}
 
-        #region values manipulating
+		public JsonArray(params JsonObject[] args) : this((IEnumerable<JsonObject>)args)
+		{
+		}
 
-        public void Add(JsonValue value)
+		public JsonArray(IEnumerable<JsonArray> args) : this()
+		{
+			foreach (var arg in args)
+				Add(arg);
+		}
+
+		public JsonArray(params JsonArray[] args) : this((IEnumerable<JsonArray>)args)
+		{
+		}
+
+		#endregion
+
+		#region values manipulating
+
+		public void Add(JsonValue value)
         {
             _values.Add(value);
         }
