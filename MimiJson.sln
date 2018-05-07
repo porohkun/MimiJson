@@ -9,7 +9,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MimiJson.Net40", "MimiJson\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MimiJson.Net45", "MimiJson\MimiJson.Net45.csproj", "{9E323F98-86B0-490C-9F6A-5DE574D8DBFB}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "MimiJson", "MimiJson\MimiJson.shproj", "{281C59DB-40B5-4A7F-93CF-4227EE3177D2}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		MimiJson\MimiJson.projitems*{281c59db-40b5-4a7f-93cf-4227ee3177d2}*SharedItemsImports = 13
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
