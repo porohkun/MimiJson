@@ -101,7 +101,7 @@ namespace MimiJson
         internal static JsonObject Parse(JsonReader reader)
         {
             reader.ReadEmpty();
-            reader.ReadObjectStart(reader.BaseStream.Position + ": wrong token. ArrayEnd expected");
+            reader.ReadObjectStart(reader.BaseStream.Position + ": wrong token. ObjectStart expected");
             reader.ReadEmpty();
             var result = new JsonObject();
             if (reader.CheckNext() != JsonReaderToken.ObjectEnd)
