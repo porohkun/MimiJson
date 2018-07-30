@@ -27,7 +27,7 @@ namespace MimiJson
         private JsonObject _object;
         private JsonArray _array;
 
-        public JsonValueType Type { get; }
+        public JsonValueType Type { get; private set; }
         public string String { get; set; }
         public double Number { get; set; }
         public JsonObject Object { get { return _object; } }
@@ -331,6 +331,24 @@ namespace MimiJson
                 stream.ReallyClose();
 #endif
                 return result;
+            }
+        }
+
+        public byte[] ToBytes(JsonComposeSettings settings)
+        {
+#if NET45
+            using (var stream = new MemoryStream())
+#else
+            using (var stream = new MyMemoryStream())
+#endif
+            {
+                ToStream(stream, settings);
+                stream.Position = 0;
+                var bytes = stream.ToArray();
+#if !NET45
+                stream.ReallyClose();
+#endif
+                return bytes;
             }
         }
 

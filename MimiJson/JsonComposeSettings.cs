@@ -14,7 +14,7 @@ namespace MimiJson
             Formatted = formatted;
             Tabs = tabs;
             CrLn = crLn;
-            Encoding = encoding == null ? new UTF8Encoding(false) : encoding;
+            Encoding = encoding == null ? Encoding.UTF8 : encoding;
         }
 
     }
