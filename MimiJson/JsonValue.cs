@@ -44,13 +44,16 @@ namespace MimiJson
             }
         }
 
-        public JsonValue this[string name]
+        public JsonValue this[string name, JsonValue defaultValue = null]
         {
             get
             {
                 if (Type != JsonValueType.Object)
                     throw GetImplisitException(JsonValueType.Object, Type);
-                return Object[name];
+                if (defaultValue == null || Object.ContainsKey(name))
+                    return Object[name];
+                else
+                    return defaultValue;
             }
         }
 
