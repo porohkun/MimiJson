@@ -34,6 +34,24 @@ namespace MimiJson
         public JsonArray Array { get { return _array; } }
         public bool Boolean { get; set; }
 
+        public T Enum<T>() where T : struct, IConvertible
+        {
+            var TType = typeof(T);
+            switch (Type)
+            {
+                case JsonValueType.Number: return (T)System.Enum.ToObject(TType, (int)this);
+                case JsonValueType.String:
+                    if (!TType.IsEnum) throw new ArgumentException("T must be an enumerated type");
+
+                    T result;
+                    if (System.Enum.TryParse<T>(String, out result))
+                        return result;
+                    else
+                        throw new ArgumentException($"Cant convert '{String}' to '{TType.Name}' enum");
+                default: throw new ArgumentException($"JsonValue type must be string or number for enum converting");
+            }
+        }
+
         public JsonValue this[int i]
         {
             get
