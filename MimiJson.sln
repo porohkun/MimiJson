@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2008
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MimiJsonDemo", "MimiJsonDemo\MimiJsonDemo.csproj", "{64211857-FD0A-4DBD-B6E7-25F108207781}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MimiJson.Net40", "MimiJson\MimiJson.Net40.csproj", "{37C51975-251A-465E-A197-6D5F4E47BC0D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MimiJson.Net45", "MimiJson\MimiJson.Net45.csproj", "{9E323F98-86B0-490C-9F6A-5DE574D8DBFB}"
@@ -20,10 +18,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{64211857-FD0A-4DBD-B6E7-25F108207781}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{64211857-FD0A-4DBD-B6E7-25F108207781}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{64211857-FD0A-4DBD-B6E7-25F108207781}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{64211857-FD0A-4DBD-B6E7-25F108207781}.Release|Any CPU.Build.0 = Release|Any CPU
 		{37C51975-251A-465E-A197-6D5F4E47BC0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{37C51975-251A-465E-A197-6D5F4E47BC0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37C51975-251A-465E-A197-6D5F4E47BC0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
