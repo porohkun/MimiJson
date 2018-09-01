@@ -34,7 +34,7 @@ namespace MimiJson
         public JsonArray Array { get { return _array; } }
         public bool Boolean { get; set; }
 
-        public T Enum<T>(bool ignoreCase = true) where T : struct, IConvertible
+        public T Enum<T>(bool ignoreCase = true, bool removeUnderscore = true) where T : struct, IConvertible
         {
             var TType = typeof(T);
             switch (Type)
@@ -44,7 +44,7 @@ namespace MimiJson
                     if (!TType.IsEnum) throw new ArgumentException("T must be an enumerated type");
 
                     T result;
-                    if (System.Enum.TryParse<T>(String, ignoreCase, out result))
+                    if (System.Enum.TryParse<T>(removeUnderscore ? String.Replace("_", "") : String, ignoreCase, out result))
                         return result;
                     else
                         throw new ArgumentException($"Cant convert '{String}' to '{TType.Name}' enum");
