@@ -22,7 +22,7 @@ namespace MimiJson
         public JsonReader(string path, Encoding encoding, bool detectEncodingFromByteOrderMarks) : base(path, encoding, detectEncodingFromByteOrderMarks) { }
         public JsonReader(string path, Encoding encoding, bool detectEncodingFromByteOrderMarks, int bufferSize) : base(path, encoding, detectEncodingFromByteOrderMarks, bufferSize) { }
 
-#endregion
+        #endregion
 
         public JsonReaderToken CheckNext()
         {
@@ -112,7 +112,7 @@ namespace MimiJson
 
             var esc = false;
             var p = Peek();
-            while (!(IsLimiter(p) && !esc))
+            while (!(IsLimiter(p) && !esc) && p != -1)
             {
                 if (!esc && p == 92)// '\'
                 {
