@@ -89,6 +89,11 @@ namespace MimiJson
             else return null;
         }
 
+        public bool TryGetValue(string key, out JsonValue value)
+        {
+            return _values.TryGetValue(key, out value);
+        }
+
         public int Count
         {
             get { return _values.Count; }

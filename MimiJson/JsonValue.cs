@@ -75,6 +75,16 @@ namespace MimiJson
             }
         }
 
+        public bool TryGetValue(string key, out JsonValue value)
+        {
+            if (Type != JsonValueType.Object)
+            {
+                value = false;
+                return false;
+            }
+            return Object.TryGetValue(key, out value);
+        }
+
         #region constructors
 
         public JsonValue()
